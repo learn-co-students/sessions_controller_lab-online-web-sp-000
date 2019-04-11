@@ -1,5 +1,21 @@
 require 'rails_helper'
 
+if RUBY_VERSION>='2.6.0'
+ if Rails.version < '5'
+   class ActionController::TestResponse < ActionDispatch::TestResponse
+     def recycle!
+       # hack to avoid MonitorMixin double-initialize error:
+       @mon_mutex_owner_object_id = nil
+       @mon_mutex = nil
+       initialize
+     end
+   end
+ else
+   puts 'Monkeypatch for ActionController::TestResponse no longer needed'
+ end
+end
+
+
 RSpec.describe SessionsController, type: :controller do
   render_views
   describe 'post create' do
@@ -28,7 +44,7 @@ RSpec.describe SessionsController, type: :controller do
 
   end
 
-  describe 'post destroy' do    
+  describe 'post destroy' do
     it 'leaves session[:name] nil if it was not set' do
       post :destroy
       expect(@request.session[:name]).to be nil
