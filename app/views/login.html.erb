@@ -1,0 +1,7 @@
+<h2>Enter Your Login information:</h2>
+
+<%= form_tag({}, method: "post") do %>
+  <%= label_tag(:name, "Enter Username:") %>
+  <%= text_field_tag(:name) %>
+  <%= button_tag("login") %>
+<% end %>
