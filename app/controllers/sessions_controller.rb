@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   
     def create
       if !!params[:name] and params[:name] != ""
-        session[:name] = params[:name].gsub(/[^A-Za-z ]/, "") 
+        session[:name] = params[:name] 
         redirect_to root_path
       else  
         redirect_to login_path
