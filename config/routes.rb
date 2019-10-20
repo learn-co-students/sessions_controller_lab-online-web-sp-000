@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+leRails.application.routes.draw do
   
 <<<<<<< HEAD
   
