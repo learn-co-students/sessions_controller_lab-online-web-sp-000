@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
   end 
 
   def destroy 
-    session[:name] = nil if logged_in?
+    # session[:name] = nil if logged_in?
+    session.delete :name 
+    redirect_to root_path
   end 
 end
