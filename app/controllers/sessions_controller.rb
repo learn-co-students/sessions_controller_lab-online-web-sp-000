@@ -4,16 +4,27 @@ class SessionsController < ApplicationController
 
   def create 
     # byebug
-    name = params[:name]
-    if name.nil? || name == ''
+    
+    if name_field_empty?
       redirect_to '/login'
     else    
-      session[:name] = params[:name]
+      set_session 
       redirect_to '/'
     end 
   end 
 
   def destroy 
     session.delete :name
+  end 
+
+  private 
+
+  def name_field_empty? 
+    name = params[:name]
+    name.nil? || name == ''
+  end 
+
+  def set_session 
+    session[:name] = params[:name]
   end 
 end
