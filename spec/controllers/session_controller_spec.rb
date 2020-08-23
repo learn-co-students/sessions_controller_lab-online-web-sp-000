@@ -12,7 +12,7 @@ RSpec.describe SessionsController, type: :controller do
       post :create, params: { name: '' }
       expect(response).to redirect_to controller: 'sessions', action: 'new'
     end
-
+ 
     it 'sets session[:name] if :name was given' do
       me = 'Werner Brandes'
       post :create, params: { name: me }
