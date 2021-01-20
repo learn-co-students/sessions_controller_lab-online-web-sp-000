@@ -3,3 +3,8 @@
   <input type=submit value='login'>
 <% end %>
 
+<% if logged_in? %>
+  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+  <% end %>
+<% end %>
