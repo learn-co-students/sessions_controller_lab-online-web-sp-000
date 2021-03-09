@@ -25,7 +25,6 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to redirect_to('/')
     end
 
-
   end
 
   describe 'post destroy' do
