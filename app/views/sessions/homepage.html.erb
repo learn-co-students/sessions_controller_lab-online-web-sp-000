@@ -1,0 +1,8 @@
+<% if session[:name].nil? %>
+  <a href="/login">Log In</a>
+<% else %>
+  <p>hi, <%= session[:name] %></p><br>
+  <%= form_tag "/logout" do %>
+    <%= submit_tag "Logout" %>
+  <% end %>
+<% end %>
