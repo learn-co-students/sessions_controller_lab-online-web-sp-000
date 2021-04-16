@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if session[:name]
-    end
+
   end
 
   def create
@@ -9,12 +8,9 @@ class SessionsController < ApplicationController
     if params[:name].nil? || params[:name].blank?
       redirect_to "/login"
 
-    elsif session[:name]
-      redirect_to "/"
-
     else
       session[:name] =  params[:name]
-      render "/application/hello"
+      redirect_to "/"
     end
   end
 
