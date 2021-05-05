@@ -1,0 +1,7 @@
+  
+<% if @user %>
+<h1>hi, <%= @user %></h1>
+<p><a href="/logout">Logout</a></p>
+<% else %>
+<p><a href="/login">Login</a></p>
+<% end %>
