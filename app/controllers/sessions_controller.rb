@@ -4,9 +4,11 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if params[:name] = nil || params[:name] = []
+        if !params[:name] || params[:name].empty?
+            # byebug
             redirect_to login_path
         else
+            # byebug
             session[:name] = params[:name]
             redirect_to root_path
         end
